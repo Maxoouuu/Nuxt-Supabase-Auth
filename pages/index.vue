@@ -18,11 +18,6 @@
                     <img class="inline-block h-6 w-6 mr-2" src="~/assets/images/facebook-logo.png" alt="Facebook logo">
                     Se connecter avec Facebook
                 </button>
-                <button @click="signInWithApple"
-                    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4">
-                    <img class="inline-block h-6 w-6 mr-2" src="~/assets/images/apple-logo.png" alt="Apple logo">
-                    Se connecter avec Apple
-                </button>
                 <button @click="signInWithLinkedIn"
                     class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mb-4">
                     <img class="inline-block h-6 w-6 mr-2" src="~/assets/images/linkedin-logo.png" alt="Apple logo">
@@ -56,17 +51,6 @@ async function signInWithGoogle() {
 async function signInWithFacebook() {
     const { user, session, error } = await supabase.auth.signInWithOAuth({
         provider: 'facebook'
-    })
-    if (error) {
-        console.log(error)
-        return
-    }
-    console.log(user, session)
-}
-
-async function signInWithApple() {
-    const { user, session, error } = await supabase.auth.signInWithOAuth({
-        provider: 'apple'
     })
     if (error) {
         console.log(error)
