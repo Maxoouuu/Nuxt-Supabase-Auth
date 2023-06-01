@@ -6,6 +6,12 @@
                 Déconnexion
             </button>
         </div>
+        <div v-if="user">
+            <h2>Nom : {{ user.user_metadata.full_name }}</h2>
+            <h2>Prénom : {{ user.user_metadata.first_name }}</h2>
+            <h2>Adresse e-mail : {{ user.email }}</h2>
+            <h2>Âge : {{ user.user_metadata.age }}</h2>
+        </div>
         <div class="">
             <div class="flex flex-col items-center justify-center min-h-screen py-4">
                 <button @click="signInWithGoogle"
@@ -26,6 +32,7 @@
             </div>
         </div>
     </div>
+    
 </template>
    
 <script setup>
@@ -46,6 +53,12 @@ async function signInWithGoogle() {
         return
     }
     console.log(user, session)
+
+    // Afficher les informations de l'utilisateur
+    console.log("Nom complet :", user.user_metadata.full_name)
+    console.log("Adresse e-mail :", user.email)
+    console.log("Âge :", user.user_metadata.age)
+    console.log("Photo de profil :", user.user_metadata.avatar_url)
 }
 
 async function signInWithFacebook() {
